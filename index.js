@@ -13,13 +13,26 @@ console.log(fifaData);
 (e) Winner of 2014 world cup final */
 
 
+console.log(fifaData[0]["Home Team Name"]);
+
+
+
+
+    
+
+
+
 /* Task 2: Create a function called  getFinals that takes `data` as an argument and returns an array of objects with only finals data */
 
-function getFinals(/* code here */) {
+function getFinals(data) {
+    const newCityFilter = cityData.filter(function(item){
+        
+        return item[Finals];
+       
+        
+    });
 
-    /* code here */
-
-};
+console.log(getFinals);ß
 
 /* Task 3: Impliment a higher-order function called `getYears` that accepts the callback function `getFinals`, and returns an array called `years` containing all of the years in the dataset */
 
