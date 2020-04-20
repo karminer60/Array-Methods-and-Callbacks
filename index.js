@@ -12,13 +12,15 @@ console.log(fifaData);
 (d) Away Team goals for 2014 world cup final
 (e) Winner of 2014 world cup final */
 
+var object = fifaData.filter(function(item){return item.Year == 2014 && item.Stage == "Final";})[0];
 
-console.log(fifaData[0]["Home Team Name"]);
+console.log(object["Home Team Name"]);
 
+console.log(object["Away Team Name"]);
 
+console.log(object["Home Team Goals"]);
 
-
-    
+console.log(object["Away Team Goals"]);
 
 
 
@@ -29,10 +31,10 @@ function getFinals(data) {
         
         return item[Finals];
        
-        
-    });
+       
+    });}
 
-console.log(getFinals);ß
+console.log(getFinals);
 
 /* Task 3: Impliment a higher-order function called `getYears` that accepts the callback function `getFinals`, and returns an array called `years` containing all of the years in the dataset */
 
