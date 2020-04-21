@@ -49,13 +49,25 @@ console.log(getYears(getFinals,fifaData));
 
 /* Task 5: Impliment a higher-order function called `getWinners`, that accepts the callback function `getFinals()` and determine the winner (home or away) of each `finals` game. Return the name of all winning countries in an array called `winners` */ 
 
-function getWinners(/* code here */) {
+function getWinners(getFinals, data) {
 
-    /* code here */
+    const winners = getFinals(data).map(function(item){
+        let homeTeamGoals = item["Home Team Goals"];
+        let awayTeamGoals = item["Away Team Goals"];
+        if(homeTeamGoals < awayTeamGoals){
+            return item["Home Team Name"];
+        }
+        else if (homeTeamGoals > awayTeamGoals){
+            return item["Away Team Name"];
+        }
+        
+        
+    });
+    return winners;
+}
 
-};
 
-getWinners();
+console.log(getWinners(getFinals, fifaData));
 
 /* Task 6: Implement a higher-order function called `getWinnersByYear` that accepts the following parameters and returns a set of strings "In {year}, {country} won the world cup!" 
 
