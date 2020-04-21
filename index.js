@@ -88,7 +88,7 @@ function getAllWinners(getWinners, getYears, getFinals, data) {
 };
 
 
-console.log(getAllWinners(getWinners, getYears,getFinals, fifaData));
+console.log(getAllWinners(getWinners, getYears, getFinals, fifaData));
 
 /* Task 7: Create a function called `getCountryWins` that takes the parameters `data` and `team initials` and returns the number of world cup wins that country has had. 
 
@@ -106,8 +106,7 @@ function getInitialsWinners (getFinals, data) {
         else if (homeTeamGoals > awayTeamGoals){
             return item["Away Team Initials"];
         }
-        
-        
+            
     });
     return initialsWinners;
 }
@@ -119,25 +118,32 @@ function getCountryWins(teamInitials, getInitialsWinners , getFinals, data ) {
     });
     return userInitialsWinners.length;
     }
-    
-
-
 console.log(getCountryWins("BRA", getInitialsWinners , getFinals, fifaData));
 
 
 /* Task 8: Write a function called getGoals() that accepts a parameter `data` and returns the team with the most goals score per appearance (average goals for) in the World Cup finals */
+const homeTeamGoals = getFinals(data).map(function(item){
+        return [item["Home Team Initials"], item["Home Team Goals"]];
+    });
 
-function getGoals(data) {
+const awayTeamGoals = getFinals(data).map(function(item){
+    return [item["Away Team Initials"], item["Away Team Goals"]];
+});
 
-    const totalLandArea = cityData.reduce(function(accumulator, item){
-        
-        return accumulator + item.land_area;
-      }, 0);
-      
-      console.log(`I am the total land area ${totalLandArea}`);
-      console.log(cityData);
+function newArrayAllGoals(homeTeamGoals, awayTeamGoals, getFinals, data) {
+    var newArray = homeTeamGoals.map(function(homeTeamGoals, i) {
+        return [homeTeamGoals , awayTeamGoals[i] ];
 
-};
+    });
+    return newArray;
+};  
+
+function getGoals( homeTeamGoals, awayTeamGoals, getFinals, data){
+    let totalGoalsPerTeam = newArrayAllGoals(homeTeamGoals, awayTeamGoals, getFinals, data).filter(function(item){
+
+    });
+}
+    
 
 getGoals();
 
