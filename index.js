@@ -22,6 +22,8 @@ console.log(object["Home Team Goals"]);
 
 console.log(object["Away Team Goals"]);
 
+console.log(object["Win conditions"]);
+
 
 
 /* Task 2: Create a function called  getFinals that takes `data` as an argument and returns an array of objects with only finals data */
