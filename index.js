@@ -41,7 +41,7 @@ function getYears(getFinals, data) {
 
     const years = getFinals(data).map(function(item){
         return item.Year;
-    }) 
+    }); 
     return years;
 };
 
@@ -76,11 +76,19 @@ Parameters:
  * callback function getYears
  */
 
-function getAllWinners(/* code here */) {
+function getAllWinners(getWinners, getYears, getFinals, data) {
 
+    var years = getYears(getFinals,data); 
+    var winners = getWinners(getFinals, data); 
+    var newArray = years.map(function(years, i) {
+        return "In " + years + " , " +  winners[i] + " won the world cup!";
+
+    });
+    return newArray;
 };
 
-getAllWinners();
+
+console.log(getAllWinners(getWinners, getYears,getFinals, fifaData));
 
 /* Task 7: Create a function called `getCountryWins` that takes the parameters `data` and `team initials` and returns the number of world cup wins that country has had. 
 
