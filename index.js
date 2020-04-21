@@ -95,20 +95,47 @@ console.log(getAllWinners(getWinners, getYears,getFinals, fifaData));
 Hint: Investigate your data to find "team initials"!
 Hint: use `.reduce` */
 
-function getCountryWins(/* code here */) {
+function getInitialsWinners (getFinals, data) {
 
-    /* code here */
+    const initialsWinners = getFinals(data).map(function(item){
+        let homeTeamGoals = item["Home Team Goals"];
+        let awayTeamGoals = item["Away Team Goals"];
+        if(homeTeamGoals < awayTeamGoals){
+            return item["Home Team Initials"];
+        }
+        else if (homeTeamGoals > awayTeamGoals){
+            return item["Away Team Initials"];
+        }
+        
+        
+    });
+    return initialsWinners;
+}
 
-};
+function getCountryWins(teamInitials, getInitialsWinners , getFinals, data ) {
+    let initials = getInitialsWinners (getFinals,data); 
+    let userInitialsWinners = initials.filter(function(item){
+            return item == teamInitials;
+    });
+    return userInitialsWinners.length;
+    }
+    
 
-getCountryWins();
+
+console.log(getCountryWins("BRA", getInitialsWinners , getFinals, fifaData));
 
 
 /* Task 8: Write a function called getGoals() that accepts a parameter `data` and returns the team with the most goals score per appearance (average goals for) in the World Cup finals */
 
-function getGoals(/* code here */) {
+function getGoals(data) {
 
-    /* code here */
+    const totalLandArea = cityData.reduce(function(accumulator, item){
+        
+        return accumulator + item.land_area;
+      }, 0);
+      
+      console.log(`I am the total land area ${totalLandArea}`);
+      console.log(cityData);
 
 };
 
