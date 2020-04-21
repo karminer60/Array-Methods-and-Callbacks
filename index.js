@@ -27,14 +27,13 @@ console.log(object["Away Team Goals"]);
 /* Task 2: Create a function called  getFinals that takes `data` as an argument and returns an array of objects with only finals data */
 
 function getFinals(data) {
-    const newCityFilter = cityData.filter(function(item){
-        
-        return item[Finals];
-       
-       
-    });}
+    const finalsData = fifaData.filter(function(item){
+        return item.Stage == "Final";        
+    });
+    return finalsData;
+}
 
-console.log(getFinals);
+console.log(getFinals(fifaData));
 
 /* Task 3: Impliment a higher-order function called `getYears` that accepts the callback function `getFinals`, and returns an array called `years` containing all of the years in the dataset */
 
