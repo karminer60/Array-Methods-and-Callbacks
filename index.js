@@ -122,30 +122,32 @@ console.log(getCountryWins("BRA", getInitialsWinners , getFinals, fifaData));
 
 
 /* Task 8: Write a function called getGoals() that accepts a parameter `data` and returns the team with the most goals score per appearance (average goals for) in the World Cup finals */
-const homeTeamGoals = getFinals(data).map(function(item){
-        return [item["Home Team Initials"], item["Home Team Goals"]];
-    });
+//const homeTeamGoals = getFinals(data).map(function(item){
+        //return [item["Home Team Initials"], item["Home Team Goals"]];
+    //});
 
-const awayTeamGoals = getFinals(data).map(function(item){
-    return [item["Away Team Initials"], item["Away Team Goals"]];
-});
+//const awayTeamGoals = getFinals(data).map(function(item){
+    //return [item["Away Team Initials"], item["Away Team Goals"]];
+//});
 
-function newArrayAllGoals(homeTeamGoals, awayTeamGoals, getFinals, data) {
-    var newArray = homeTeamGoals.map(function(homeTeamGoals, i) {
-        return [homeTeamGoals , awayTeamGoals[i] ];
+//function newArrayAllGoals(homeTeamGoals, awayTeamGoals, getFinals, data) {
+    //var newArray = homeTeamGoals.map(function(homeTeamGoals, i) {
+        //return [homeTeamGoals , awayTeamGoals[i] ];
 
-    });
-    return newArray;
-};  
+    //});
+    //return newArray;
+//};  
 
-function getGoals( homeTeamGoals, awayTeamGoals, getFinals, data){
-    let totalGoalsPerTeam = newArrayAllGoals(homeTeamGoals, awayTeamGoals, getFinals, data).filter(function(item){
-
-    });
-}
+//function getGoals( homeTeamGoals, awayTeamGoals, getFinals, data){
+    //let totalGoalsPerTeam = newArrayAllGoals(homeTeamGoals, awayTeamGoals, getFinals, data).forEach(function(item){
+        //if(item > item + 1){
+            //return 
+        //}
+    //});
+//}
     
 
-getGoals();
+//getGoals();
 
 
 /* Task 9: Write a function called badDefense() that accepts a parameter `data` and calculates the team with the most goals scored against them per appearance (average goals against) in the World Cup finals */
@@ -161,13 +163,31 @@ badDefense();
 
 /* Task 10: Write a function called `getAverageGoals` that accepts a parameter `data` and returns the the average number of home team goals and away team goals scored per match (Hint: use .reduce and do this in 2 steps) */
 
-function getAverageGoals(/* code here */) {
 
-    /* code here */
+function getAverageGoals(getFinals, data) {
+    const homeTeamGoals = getFinals(data).map(function(item){
+        return item["Home Team Goals"];
+    });
+    
+    const awayTeamGoals = getFinals(data).map(function(item){
+        return  item["Away Team Goals"];
+    });
+
+    let homeTeamGoalsTotal = homeTeamGoals.reduce(function(accumulator , item){
+        return accumulator + item; 
+    }, 0);
+
+    let awayTeamGoalsTotal = awayTeamGoals.reduce(function(accumulator , item){
+        return accumulator + item; 
+    }, 0);
+
+
+
+    return "The home team goals average is " + homeTeamGoalsTotal/homeTeamGoals.length + " and the away team goals average is " + awayTeamGoalsTotal/awayTeamGoals.length;
 
 };
 
-getAverageGoals();
+console.log(getAverageGoals(getFinals, fifaData));
 
 
 /// STRETCH 🥅 //
